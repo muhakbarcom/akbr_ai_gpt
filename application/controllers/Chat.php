@@ -18,8 +18,13 @@ class Chat extends CI_Controller
 				$answer = "hari ini adalah hari-hari biasa tanpa dia yang dulu pernah jadi hari-hari mu! :)";
 			} else {
 				$response = $this->send_request_to_gpt($input_text);
-				$data = json_decode($response);
-				$answer = $data->choices[0]->message->content;
+				json_decode($response);
+				if (json_last_error() === JSON_ERROR_NONE) {
+					$data = json_decode($response);
+					$answer = $data->choices[0]->message->content;
+				} else {
+					$answer = "masukan pertanyaan kamu yang bener!!";
+				}
 			}
 		} else {
 			$answer = "masukan pertanyaan kamu!!";
@@ -45,7 +50,7 @@ class Chat extends CI_Controller
 				"content" => $input_text
 			))
 		));
-
+		$key = $this->config->item('GPT_API_KEY');
 		curl_setopt_array($curl, array(
 			CURLOPT_URL => 'https://api.openai.com/v1/chat/completions',
 			CURLOPT_RETURNTRANSFER => true,
@@ -58,7 +63,7 @@ class Chat extends CI_Controller
 			CURLOPT_POSTFIELDS => $json,
 			CURLOPT_HTTPHEADER => array(
 				'Content-Type: application/json',
-				'Authorization: Bearer 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'
+				"Authorization: Bearer $key"
 			),
 		));
 

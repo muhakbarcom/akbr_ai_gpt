@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
-  <title>Hello, world!</title>
+  <title>Akbr AI GPT!</title>
   <style>
     body {
       /* background-image: linear-gradient(to right, #06beb6, #06beb6); */
@@ -158,6 +158,8 @@
         var scrollTop = $(this).scrollTop();
         $('.parallax').css('background-position-y', -(scrollTop / 2) + 'px');
       });
+
+      $('form').append('<small><div class="text-center">Powered by OPEN AI, Develop by <a href="www.muhakbar.com" target="_BLANK">www.muhakbar.com</a></div></small>')
 
       $(window).keydown(function(event) {
         if (event.keyCode == 13) {
