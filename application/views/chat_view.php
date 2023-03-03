@@ -158,8 +158,8 @@
         var scrollTop = $(this).scrollTop();
         $('.parallax').css('background-position-y', -(scrollTop / 2) + 'px');
       });
-
       $('form').append('<small><div class="text-center">Powered by OPEN AI, Develop by <a href="www.muhakbar.com" target="_BLANK">www.muhakbar.com</a></div></small>')
+
 
       $(window).keydown(function(event) {
         if (event.keyCode == 13) {

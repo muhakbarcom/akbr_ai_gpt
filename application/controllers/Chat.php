@@ -50,7 +50,7 @@ class Chat extends CI_Controller
 				"content" => $input_text
 			))
 		));
-		$key = $this->config->item('GPT_API_KEY');
+		$open_ai_api_key = $this->config->item('open_ai_api_key');
 		curl_setopt_array($curl, array(
 			CURLOPT_URL => 'https://api.openai.com/v1/chat/completions',
 			CURLOPT_RETURNTRANSFER => true,
@@ -63,7 +63,7 @@ class Chat extends CI_Controller
 			CURLOPT_POSTFIELDS => $json,
 			CURLOPT_HTTPHEADER => array(
 				'Content-Type: application/json',
-				"Authorization: Bearer $key"
+				"Authorization: Bearer $open_ai_api_key"
 			),
 		));
 
